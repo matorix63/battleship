@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <main class="game">
+      <h1>Battleship</h1>
+      <p id="status" class="status"></p>
+
+      <div class="boards">
+        <section class="board-panel">
+          <h2>Your fleet</h2>
+          <div id="player-board" class="board"></div>
+        </section>
+        <section class="board-panel">
+          <h2>Enemy waters</h2>
+          <div id="enemy-board" class="board enemy"></div>
+        </section>
+      </div>
+
+      <div class="controls">
+        <button id="randomize-btn" class="ghost-btn">Randomize fleet</button>
+        <button id="new-game-btn" class="primary-btn">New game</button>
+      </div>
+    </main>
+  </body>
+</html>
