@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.game {
+  text-align: center;
+  max-width: 900px;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 8px 0 24px;
+}
+
+.boards {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.board-panel h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1px;
+  width: min(88vw, 320px);
+  aspect-ratio: 1;
+  background-color: #ccc;
+  border: 1px solid #ccc;
+}
+
+.cell {
+  border: none;
+  padding: 0;
+  background-color: #fff;
+}
+
+.enemy .cell.unknown {
+  cursor: pointer;
+}
+
+.enemy .cell.unknown:hover {
+  background-color: #eee;
+}
+
+.cell.ship {
+  background-color: #ddd;
+}
+
+.cell.miss {
+  background-color: #bbb;
+}
+
+.cell.hit {
+  background-color: #888;
+}
+
+.cell.sunk {
+  background-color: #444;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.controls button {
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  border: 1px solid #999;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: #f2f2f2;
+}
+
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
