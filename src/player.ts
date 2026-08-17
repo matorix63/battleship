@@ -1,22 +1,32 @@
 import Gameboard from "./gameboard";
+import type { AttackResult, Coords } from "./types";
+
+export interface AttackReport {
+  coords: Coords;
+  result: AttackResult;
+}
 
 export class Player {
-  constructor(name = "Player") {
+  readonly name: string;
+  readonly board: Gameboard;
+
+  constructor(name: string = "Player") {
     this.name = name;
     this.board = new Gameboard();
   }
 }
 
 export class ComputerPlayer extends Player {
+  readonly tried = new Set<string>();
+  targetQueue: Coords[] = [];
+
   constructor() {
     super("Computer");
-    this.tried = new Set();
-    this.targetQueue = [];
   }
 
-  #randomCoords(boardSize) {
-    let row;
-    let col;
+  #randomCoords(boardSize: number): Coords {
+    let row: number;
+    let col: number;
     do {
       row = Math.floor(Math.random() * boardSize);
       col = Math.floor(Math.random() * boardSize);
@@ -24,22 +34,27 @@ export class ComputerPlayer extends Player {
     return [row, col];
   }
 
-  chooseAttack(enemyBoard) {
+  chooseAttack(enemyBoard: Gameboard): Coords {
     while (this.targetQueue.length > 0) {
       const candidate = this.targetQueue.shift();
-      if (!this.tried.has(Gameboard.key(...candidate))) return candidate;
+      if (
+        candidate !== undefined &&
+        !this.tried.has(Gameboard.key(...candidate))
+      ) {
+        return candidate;
+      }
     }
     return this.#randomCoords(enemyBoard.size);
   }
 
-  attack(enemyBoard) {
+  attack(enemyBoard: Gameboard): AttackReport {
     const coords = this.chooseAttack(enemyBoard);
     this.tried.add(Gameboard.key(...coords));
     const result = enemyBoard.receiveAttack(coords);
 
     if (result === "hit") {
       const [row, col] = coords;
-      const neighbors = [
+      const neighbors: Coords[] = [
         [row - 1, col],
         [row + 1, col],
         [row, col - 1],

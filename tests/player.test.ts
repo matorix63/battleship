@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { Player, ComputerPlayer } from "../src/player";
 import Ship from "../src/ship";
 
@@ -15,7 +16,7 @@ describe("ComputerPlayer", () => {
   test("never attacks the same cell twice", () => {
     const computer = new ComputerPlayer();
     const enemy = new Player();
-    const seen = new Set();
+    const seen = new Set<string>();
     for (let i = 0; i < 100; i++) {
       const { coords } = computer.attack(enemy.board);
       const key = coords.join(",");

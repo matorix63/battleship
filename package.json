@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
-    "test": "jest"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run lint && npm test"
   },
   "repository": {
     "type": "git",
@@ -23,18 +26,18 @@
   },
   "homepage": "https://github.com/matorix63/node-template#readme",
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
     "@eslint/js": "^10.0.1",
-    "babel-jest": "^30.4.1",
     "css-loader": "^7.1.4",
+    "esbuild-loader": "^4.5.0",
     "eslint": "^10.7.0",
     "globals": "^17.7.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.7",
-    "jest": "^25.0.0",
     "prettier": "3.9.6",
     "style-loader": "^4.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^4.1.10",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1",
     "webpack-dev-server": "^6.0.0"

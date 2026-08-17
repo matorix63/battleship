@@ -1,18 +1,23 @@
 export default class Ship {
-  constructor(length, name = "Ship") {
-    if (!Number.isInteger(length) || length < 1)
+  readonly length: number;
+  readonly name: string;
+  hits: number;
+
+  constructor(length: number, name: string = "Ship") {
+    if (!Number.isInteger(length) || length < 1) {
       throw new Error("Ship length must be an integer greater than 0");
+    }
     this.length = length;
     this.name = name;
     this.hits = 0;
   }
 
-  hit() {
+  hit(): void {
     if (this.isSunk()) return;
     this.hits++;
   }
 
-  isSunk() {
+  isSunk(): boolean {
     return this.hits >= this.length;
   }
 }
