@@ -1,4 +1,5 @@
-import Ship from "../src/ship.js";
+import { describe, test, expect } from "vitest";
+import Ship from "../src/ship";
 
 describe("Ship", () => {
   test("Ship is created with correct length", () => {
