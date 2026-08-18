@@ -1,6 +1,6 @@
 # Battleship
 
-The final project of The Odin Project's JavaScript course
+The final project of The Odin Project's JavaScript course. Whole project was rewritten in TypeScript.
 
 ## Play
 
@@ -8,7 +8,7 @@ You and the computer each get a random fleet of five ships. Click enemy waters t
 
 ## TDD
 
-The game logic was written test-first using Jest.
+The game logic was written test-first using Vitest.
 
 ## Live demo
 
